@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Calculator</title>
+    <link rel = "stylesheet" href = "calc.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body onload = "createButton()" /*onkeyup = "calculate(event)"*/ >
+    <div id = "wrapper" class="container">
+        <nav class="nav"><h1 style="text-align:center;color:green">Drag CalC</h1></nav>
+        <div id="searchBar">
+            <input type="search" id="input" placeholder="Search" style="width:262px" onkeyup="sortBtn(event)">
+        </div>
+        <div id="wrap">
+            <div id="display">
+                <textarea id="result" onkeydown="workarea(event)"  autofocus tabindex="-1">  
+                               
+                </textarea> 
+                <p id='errSpan' display='none'></span>
+            </div> 
+            <div id="showBtn">
+                    <div id="subDiv1" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv2" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv3" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv4" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv5" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv6" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv7" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv8" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv9" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv10" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv11" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv12" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv13" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv14" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv15" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv16" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv17" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv18" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv19" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv20" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv21" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv22" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv23" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv24" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv25" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv26" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv27" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv28" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv29" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+                    <div id="subDiv30" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)"></div>
+            </div>
+            <!-- <div id="showBtnLayer" ondrop="drop(event)" ondragover="allowDrop(event)" ondragend="addEffect(event)">Drop Here!</div> -->
+        </div>
+        <div id="dragBar" ondrag="dragBar()" draggable="=true"></div>
+        <div id="showData" class="history" draggable="=true" ondragover="dragSpot(event)">
+            <button onclick="generateCSVFile()">Download CSV </button>
+        </div>
+    </div>  
+</body>
+<script>
+window.addEventListener("load",function(){
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display == "block" || panel.style.display == "")
+    {
+        panel.style.display = "none";
+    }
+    else
+    {
+        panel.style.display = "block";
+    }
+  });
+};
+});
+
+function generateCSVFile() {
+    let data = document.querySelectorAll("#showData > p");
+    let collection = [];
+    let csv,hiddenElement;
+    if(data.length<1){
+        return;
+    }
+    data.forEach(function(row) {
+        let arr = [];
+        let c = row.children;
+        let a = c[0].innerText;
+        let b = c[2].innerText;
+        arr.push(a);
+        arr.push(b);
+        collection.push(arr);   
+    });
+    csv = 'Input,Output\n';
+    collection.forEach(function(row) {
+        csv += row.join(',');
+        csv += "\n";
+    });
+    hiddenElement = document.createElement('a');
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+    hiddenElement.target = '_blank';
+    hiddenElement.download = 'calc_output.csv';
+    hiddenElement.click();   
+}
+
+function dragBar(){
+   console.log("hi")
+};
+function dragRight(e){
+
+} 
+
+</script>
+<script src = "calc.js"></script>
+</html>

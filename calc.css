@@ -1,0 +1,254 @@
+*{
+    box-sizing: border-box;
+}
+html {
+    /* background: #100a1c; */
+    background-image:
+      radial-gradient(50% 30% ellipse at center top, #201e40 0%, rgba(0,0,0,0) 100%),
+      radial-gradient(60% 50% ellipse at center bottom, #261226 0%, #100a1c 100%);
+    background-attachment: fixed;
+    color: #6cacc5;
+  }
+  
+body {
+    background: #100a1c !important;
+    color: #6cacc5;
+}
+nav {
+    height:50px;
+}
+#wrapper{
+    width:100%;
+    /* background-color: #100a1c; */
+}
+#searchBar{
+    width:15%;
+    height:620px;
+    border: 2px solid #cdcdcd;
+    float: left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#searchBar input{
+    padding-left:8px;
+    position: sticky;
+    top: 0;
+}
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 10px 10px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  
+.active, .accordion:hover {
+    background-color: #ccc;
+  }
+  
+.accordion:after {
+    content: "\2212";
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+.active:after {
+    content: '\002B';
+  }
+  
+.panel {
+    overflow: hidden;
+    transition:0.2s ease-out;
+  }
+#wrap{
+    width:54%;
+    height:620px;
+    float:left;
+}
+#showData{
+    position: absolute;
+    right:91px;
+    width:25%;
+    height:620px;
+    padding:20px 20px;
+    overflow-x:hidden;
+    overflow-y:visible;
+    background-color: white;
+    color: black;
+    border: 2px solid #cdcdcd;
+    float:left;
+}
+#showData button{
+    margin: 10px 40px;
+}
+#dragBar {
+    position: absolute;
+    right:414px;
+    width:2%;
+    height:620px;
+    background-color: red;
+    float:left;
+    border-color: green;
+    cursor:col-resize;
+}
+
+#display{
+    width:100%;
+    float:left;
+    height:200px;
+}
+
+#showBtn{
+    width:100%;
+    height:420px;
+    float:left;
+    position:relative;
+    background-color: #fff;
+}
+#showBtn button {
+    font-size:36px;
+    background-color: rgb(219, 205, 205);
+    color:darkblue;
+}
+#showBtn button:focus{
+    outline: none;
+}
+#showBtn div{
+    width:60px;
+    height:60px;
+    float:left;
+    padding:12px;
+    margin:12px;
+    /* background-color: #edf0f1; */
+}
+.blink{
+    border-style:dotted;
+    border-color: red;
+    border-width: 2px;
+}
+/* #showBtnLayer{
+    text-align:center;
+    padding:25px 25px 25px 25px;
+    color:white;
+    position: absolute;
+    width: 47.3%;
+    height: 420px;
+    display: none;
+    top: 250px;
+} */
+#result{
+    width:100%;
+    height:175px;
+    cursor:pointer;
+    color:black;
+    text-align: right;
+    background-color:white;
+    resize:none;
+    float:left;
+    border-bottom:none;
+}
+#errSpan{
+    width:100%;
+    height:25px;
+    float:right;
+    text-align: center;
+    background-color:white; ;
+    color:green;
+    overflow: hidden;
+}
+
+#inputBtn{
+    width:100%;
+    float:right;
+    margin-top:35px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color:#100a1c ;
+    padding: 10px;
+}
+
+
+/* Ripple effect */
+.ripple {
+    background-position: center;
+    transition: background 0.8s;
+  }
+  .ripple:hover {
+    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+  }
+  .ripple:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+  }
+
+button {
+    background: rgba(42,50,113, .28);
+    color: #6cacc5;
+    cursor: pointer;
+    font: inherit;
+    font-size: 5em;
+    margin: 1em;
+    width:151px;
+    height:1cm;
+    border: none;
+    text-transform: uppercase;
+    box-shadow: 0 0 4px #999;
+    outline: none;
+    text-align: center;
+}
+.circle{
+    border-radius:50%;
+    width: 50px;
+    height: 50px;
+}
+.square{
+    width: 50px;
+    height: 50px;
+}
+.RECT{
+    height: 50px;
+}
+  
+.leftSpan{
+    width:60%;
+    float: left;
+}
+.midSpan{
+    width:10%;
+}
+.rightSpan{
+    width:30%;
+    float: right;
+}
+
+/*width*/
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #fcfcfc; 
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(212, 209, 209); 
+    border-radius: 20%;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(212, 209, 209); 
+    border :2px solid rgb(201, 192, 192);
+  }
+
